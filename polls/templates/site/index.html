@@ -1,0 +1,70 @@
+{% load static %}
+
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link href="{% static 'stylesheets/screen.css' %}" media="screen, projection" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="{% static 'stylesheets/print.css' %}" media="print" rel="stylesheet" type="text/css" /> -->
+    <link href="{% static 'stylesheets/style.css' %}" rel="stylesheet" type="text/css" />
+    <!--[if IE]>
+      <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <title>Surface Plot</title>
+</head>
+
+<h1>Surface plot <span>com sua foto</span></h1>
+
+{% block includes %}
+
+{% if b64 %}
+
+    <style>
+        .imgbox {
+            display: grid;
+            /* height: 100%; */
+            padding-top: 30px;
+        }
+        .center-fit {
+            max-width: 100%;
+            max-height: 100vh;
+            margin: auto;
+        }
+    </style>
+
+    <div class="imgbox">
+        <a href="/show">
+            <img class="center-fit" src="data:image/jpeg;base64, {{ b64 }}" />
+        </a>
+    </div>
+
+{% endif %}
+
+{% endblock includes %}
+
+<div class="custom-file-upload">
+    <!--<label for="file">File: </label>-->
+    <form id="target" enctype="multipart/form-data" method="post" action="">{% csrf_token %}
+        <input type="file" id="file" name="image" />
+    </form>
+</div>
+
+<!-- <p>See the <a href="https://codepen.io/wallaceerick/pen/ctsCz">Custom Select Menu</a> demo!</p> -->
+
+<script type="text/javascript" src="{% static 'javascripts/jQuery.js' %}"></script>
+<script type="text/javascript" src="{% static 'javascripts/script.js' %}"></script>
+
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <!-- <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li> -->
+    <script type="text/javascript" >alert("{{ message }}")</script>
+    {% endfor %}
+</ul>
+{% endif %}
