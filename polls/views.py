@@ -138,11 +138,11 @@ def decodeImage(string):
 
 def image_treatment(bts):
     
-    # magic_number = int(input("enter the magic number: "))  # should be 200 for semless surface
-    magic_number = 100
+    magic_number = 7
 
     bts.seek(0)
     im = Image.open(bts)
+    im = im.resize((1000,1000))
 
     width = im.size[0]
     height = im.size[1]
@@ -176,7 +176,7 @@ def image_treatment(bts):
     Z = zs.reshape(X.shape)
 
     # Plot the surface.
-    surf = ax.plot_surface(X, Y, Z, rstride=int(width/magic_number), cstride=int(height/magic_number), cmap="turbo" )
+    surf = ax.plot_surface(X, Y, Z, rstride=magic_number, cstride=magic_number, cmap="turbo" )
 
     # cset = ax.contourf(X, Y, Z, zdir='z', offset=-100, cmap=cm.coolwarm)
 
