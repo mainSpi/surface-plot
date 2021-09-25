@@ -96,7 +96,7 @@ def sendEmail(array):
 
     for img in array:
         img_byte_arr = BytesIO()
-        img.save(img_byte_arr, format='PNG')
+        img.save(img_byte_arr, format='JPEG')
         img_byte_arr = img_byte_arr.getvalue()
 
         part = MIMEBase("application", "octet-stream")
@@ -105,7 +105,7 @@ def sendEmail(array):
 
         part.add_header(
             "Content-Disposition",
-            "attachment; filename="+img.filename,
+            "attachment; filename=img.jpeg",
         )
         message.attach(part)
 
