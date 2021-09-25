@@ -99,7 +99,7 @@ def decodeImage(string):
 def image_treatment(bts):
     
     # magic_number = int(input("enter the magic number: "))  # should be 200 for semless surface
-    magic_number = 10
+    magic_number = 100
 
     bts.seek(0)
     im = Image.open(bts)
