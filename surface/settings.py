@@ -141,4 +141,8 @@ STATIC_ROOT = ''
 
 STATICFILES_DIRS = ( os.path.join('static'), )
 
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())
+
 # SASS_PROCESSOR_ROOT = STATIC_ROOT
