@@ -244,7 +244,7 @@ def image_treatment(bts):
     w = aaa[1].size[0]
     h = aaa[1].size[1]
 
-    aaa.insert(0,im.resize((w,h)))
+    aaa.insert(0,im.resize((w,h)).transpose(Image.FLIP_LEFT_RIGHT))
 
     def create_collage(width, height, listofimages):
         cols = 3
