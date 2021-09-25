@@ -23,7 +23,7 @@ from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from PIL import Image
+from PIL import Image, ImageOps
 from io import BytesIO
 
 port = 465
@@ -142,6 +142,7 @@ def image_treatment(bts):
 
     bts.seek(0)
     im = Image.open(bts)
+    im = ImageOps.exif_transpose(im)
     im = im.resize((1000,1000))
 
     width = im.size[0]
