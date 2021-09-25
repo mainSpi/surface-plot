@@ -30,6 +30,8 @@ SECRET_KEY = 'django-insecure-#ca^9o*&7x=+bb5&$9k7#)w1mb&^m)m&58293hdk-#+uo6e474
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+GUNICORN_CMD_ARGS = '--timeout 900'
+
 ALLOWED_HOSTS = []
 
 
