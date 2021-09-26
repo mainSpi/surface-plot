@@ -62,7 +62,7 @@ def bunda(request):
 
 def cu(request):
     if request.method == 'POST':
-        file = request.FILES['image']
+        file = request.FILES.get('image')
 
         if file.size > 50 * 1000000:
             messages.error(request,    'A imagem deve ser menor que 50 Mb. Tente novamente.')            
@@ -214,7 +214,7 @@ def image_treatment(bts):
         fig.savefig(buf,bbox_inches='tight', dpi=200)
         buf.seek(0)
         img = Image.open(buf)
-        return img
+        return img.transpose(Image.FLIP_LEFT_RIGHT)
 
     aaa = []
 
@@ -245,7 +245,7 @@ def image_treatment(bts):
     w = aaa[1].size[0]
     h = aaa[1].size[1]
 
-    aaa.insert(0,im.resize((w,h)).transpose(Image.FLIP_LEFT_RIGHT))
+    aaa.insert(0,im.resize((w,h)))
 
     def create_collage(width, height, listofimages):
         cols = 3

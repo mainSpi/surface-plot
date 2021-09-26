@@ -123,3 +123,64 @@ p a:hover {
 .file-upload-button:hover {
   background-color: #6d2018;
 }
+
+.big-div {
+  height: 100%;
+  width: 100%;
+}
+
+/* Popup box BEGIN */
+.hover_bkgr_fricc{
+  background:rgba(0,0,0,.4);
+  cursor:pointer;
+  display:none;
+  height:100%;
+  position:fixed;
+  text-align:center;
+  top:0;
+  width:100%;
+  z-index:10000;
+}
+.hover_bkgr_fricc .helper{
+  color: black;
+  display:inline-block;
+  height:100%;
+  vertical-align:middle;
+}
+.hover_bkgr_fricc > div {
+  background-color: #fff;
+  box-shadow: 10px 10px 60px #555;
+  display: inline-block;
+  height: auto;
+  max-width: 551px;
+  min-height: 100px;
+  vertical-align: middle;
+  width: 60%;
+  position: relative;
+  border-radius: 8px;
+  padding: 15px 5%;
+}
+h2 {
+  color: black;
+  font-weight: bold;
+  font-size: 5vh;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+h3 {
+  color: rgb(54, 44, 44);
+  font-weight: bolder;
+  font-size: 4vh;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+@media screen and (max-width: 500px) {
+  h2 {
+    font-size: 5vw;
+  }
+  h3 {
+    font-size: 4vw;
+  }
+}
+
+/* Popup box BEGIN */
