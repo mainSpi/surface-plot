@@ -43,22 +43,6 @@ def bunda(request):
     prepareResponse(resp)
     return resp
 
-    # if ('show' in request.session and request.session['show'] == 'True'):
-    #     print('entrei pra mostrar imagem, show: '+request.session['show'])
-    #     request.session['show'] = 'False'
-    #     print('acabei de mudar agora deve estar: '+request.session['show'])
-    #     string = request.session['b64']
-    #     img = decodeImage(string)
-    #     img_byte_arr = getBytesFromImage(img)
-    #     resp = HttpResponse(img_byte_arr, content_type="image/jpeg")
-    #     prepareResponse(resp)
-    #     return resp
-    # else:
-    #     print('nao entrei, mostrando site normal')
-    #     resp = redirect('/')
-    #     prepareResponse(resp)
-    #     return resp
-
 
 def cu(request):
     if request.method == 'POST':
