@@ -262,11 +262,11 @@ def crop_face(pil_img):
     	
 	width = pil_img.size[0]
 	height = pil_img.size[1]
-
 	size = width if (width > height) else height
-	scale = int(1000/size)
 
-	pil_img = pil_img.resize((width*scale, height*plt.scale))
+	if (size>1000):
+		scale = int(1000/size)
+		pil_img = pil_img.resize((width*scale, height*scale))
 
 	img = pil_to_cv2(pil_img)
 	
