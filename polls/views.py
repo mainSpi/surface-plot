@@ -136,7 +136,7 @@ def plot_surface(im):
 	zs = np.array(fun(np.ravel(X), np.ravel(Y)))
 	Z = zs.reshape(X.shape)
 
-	surf = ax.plot_surface(X, Y, Z, rstride=magic_number, cstride=magic_number, cmap="turbo" )
+	surf = ax.plot_surface(X, Y, Z, rstride=magic_number, cstride=magic_number, cmap="turbo", shade=True)
 
 	ax.set_zlim(0, 255)
 	ax.set_zlabel("depth")
