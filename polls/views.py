@@ -22,7 +22,6 @@ from matplotlib import cm
 from matplotlib.ticker import MultipleLocator
 import numpy as np
 import cv2
-import os
 
 types = ['image/jpeg', 'image/png', 'image/tiff', 'image/webp', 'image/gif', 'image/x-icon', 'image/bmp']
 
@@ -47,12 +46,6 @@ def cu(request):
 			messages.error(request,    'O arquivo deve ser uma imagem. Tente novamente.')
 		else:
 			raw_img = open_image(file.file)
-
-			print('\n')
-			print('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-			print(os.getcwd())
-			print('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-			print('\n')
 
 			if len(request.POST.getlist('face')) > 0 :
 				raw_img = crop_face(raw_img)
@@ -270,7 +263,7 @@ def crop_face(pil_img):
 	
 	gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 	# face_cascade = cv2.CascadeClassifier("C:\\Users\\Murilo\\Desktop\\Programacao\\Python\\surface_plot\\polls\\haarcascade_frontalface_alt2.xml")
-	face_cascade = cv2.CascadeClassifier("/polls/haarcascade_frontalface_alt2.xml")
+	face_cascade = cv2.CascadeClassifier("/app/polls/haarcascade_frontalface_alt2.xml")
 	faces = face_cascade.detectMultiScale(gray, 1.1, 4)
 	
 	if (len(faces) > 0):
