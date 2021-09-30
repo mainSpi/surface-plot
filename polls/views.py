@@ -284,8 +284,8 @@ def crop_face(pil_img):
 	img = pil_to_cv2(pil_img)
 	
 	gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-	face_cascade = cv2.CascadeClassifier("C:\\Users\\Murilo\\Desktop\\Programacao\\Python\\surface_plot\\polls\\haarcascade_frontalface_alt2.xml")
-	# face_cascade = cv2.CascadeClassifier("/app/polls/haarcascade_frontalface_alt2.xml")
+	# face_cascade = cv2.CascadeClassifier("C:\\Users\\Murilo\\Desktop\\Programacao\\Python\\surface_plot\\polls\\haarcascade_frontalface_alt2.xml")
+	face_cascade = cv2.CascadeClassifier("/app/polls/haarcascade_frontalface_alt2.xml")
 	faces = face_cascade.detectMultiScale(gray, 1.1, 4)
 	
 	if (len(faces) > 0):
