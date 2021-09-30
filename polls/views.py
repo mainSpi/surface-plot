@@ -262,17 +262,30 @@ def crop_face(pil_img):
     	
 	width = pil_img.size[0]
 	height = pil_img.size[1]
-	size = width if (width > height) else height
 
-	if (size>1000):
-		scale = int(1000/size)
-		pil_img = pil_img.resize((width*scale, height*scale))
+	big = width if (width > height) else height
+	small = height if (width == big) else width
+
+	h = int((1000*small)/big)
+
+	# print("wi: "+str(width))
+	# print("he: "+str(height))
+	# print("big: "+str(big))
+	# print("small: "+str(small))
+	# print("H: "+str(h))
+
+	if width>height:
+		pil_img = pil_img.resize((1000, h))
+	else:
+		pil_img = pil_img.resize((h, 1000))
+    		
+	print(str(pil_img.size[0]) + " - " + str(pil_img.size[1]))
 
 	img = pil_to_cv2(pil_img)
 	
 	gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-	# face_cascade = cv2.CascadeClassifier("C:\\Users\\Murilo\\Desktop\\Programacao\\Python\\surface_plot\\polls\\haarcascade_frontalface_alt2.xml")
-	face_cascade = cv2.CascadeClassifier("/app/polls/haarcascade_frontalface_alt2.xml")
+	face_cascade = cv2.CascadeClassifier("C:\\Users\\Murilo\\Desktop\\Programacao\\Python\\surface_plot\\polls\\haarcascade_frontalface_alt2.xml")
+	# face_cascade = cv2.CascadeClassifier("/app/polls/haarcascade_frontalface_alt2.xml")
 	faces = face_cascade.detectMultiScale(gray, 1.1, 4)
 	
 	if (len(faces) > 0):
