@@ -94,8 +94,6 @@ tqdm==4.52.0
 traits==6.2.0
 traitsui==7.2.1
 Transcrypt==3.9.0
-Twisted==21.2.0
-twisted-iocpsupport==1.0.1
 txaio==21.2.1
 typing-extensions==3.7.4.3
 urllib3==1.26.2
@@ -105,7 +103,6 @@ wget==3.2
 whitenoise==5.3.0
 wrapt==1.12.1
 wslink==0.2.0
-wxPython==4.1.1
 youtube-dl==2020.11.18
 zipp==3.5.0
 zope.interface==5.4.0
