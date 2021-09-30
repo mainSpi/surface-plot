@@ -1,94 +1,84 @@
 {% load static %}
 
 <script>
-    if (window.history.replaceState) {
-        window.history.replaceState(null, null, window.location.href);
-    }
+	if (window.history.replaceState) {
+		window.history.replaceState(null, null, window.location.href);
+	}
 </script>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static 'stylesheets/style.css' %}" rel="stylesheet" type="text/css" />
-    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="{% static 'stylesheets/style.css' %}" rel="stylesheet" type="text/css" />
+	<link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}" />
 
-    <!-- Chrome, Firefox OS and Opera -->
-    <meta name="theme-color" content="#e74c3c">
-    <!-- Windows Phone -->
-    <meta name="msapplication-navbutton-color" content="#e74c3c">
-    <!-- iOS Safari -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="#e74c3c">
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#e74c3c">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#e74c3c">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#e74c3c">
 
-    <!--[if IE]>
-            <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
-    <![endif]-->
-    <title>Surface Plot</title>
+	<!--[if IE]>
+			<link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+	<![endif]-->
+	<title>Surface Plot</title>
 </head>
 
 <div id="dropContainer" class="big-div">
 
-    <body>
+	<body>
 
-        <h1>Surface plot<span>com sua foto,</span>
-            <span style="margin-top: 1px;">em 20 segundos.</span>
-        </h1>
+		<h1>Surface plot<span>com sua foto,</span>
+			<span style="margin-top: 1px;">em 20 segundos.</span>
+		</h1>
 
-        {% block includes %}
+		{% block includes %}
+		{% if b64 %}
 
-        {% if b64 %}
+		<div class="imgbox">
+			<a href="/show">
+				<img class="center-fit" src="data:image/jpeg;base64, {{ b64 }}" />
+			</a>
+		</div>
 
-        <style>
-            .imgbox {
-                display: grid;
-                padding-top: 30px;
-            }
+		{% endif %}
+		{% endblock includes %}
 
-            .center-fit {
-                max-width: 100%;
-                max-height: 100vh;
-                margin: auto;
-            }
-        </style>
+		<form id="target" enctype="multipart/form-data" method="post" action="">{% csrf_token %}
+			<label class="container"> Detectar Rosto
+				<input type="checkbox" checked="checked" name="face">
+				<span class="checkmark"></span>
+			</label>
 
-        <div class="imgbox">
-            <a href="/show">
-                <img class="center-fit" src="data:image/jpeg;base64, {{ b64 }}" />
-            </a>
-        </div>
+			<div class="custom-file-upload">
+				<input type="file" id="file" name="image" />
+			</div>
 
-        {% endif %}
+		</form>
 
-        {% endblock includes %}
+		<div>
+			<div class="hover_bkgr_fricc" style="left: 0%;">
+				<span class="helper"></span>
+				<div>
+					<h2>Processando...</h2>
+					<br />
+					<h3>Aguarde: <span id="count" style="text-transform: lowercase;"></span></h3>
+				</div>
+			</div>
+		</div>
 
-        <div class="custom-file-upload">
-            <!--<label for="file">File: </label>-->
-            <form id="target" enctype="multipart/form-data" method="post" action="">{% csrf_token %}
-                <input type="file" id="file" name="image" />
-            </form>
-        </div>
+		<script type="text/javascript" src="{% static 'javascripts/jQuery.js' %}"></script>
+		<script type="text/javascript" src="{% static 'javascripts/script.js' %}"></script>
 
-        <div>
-            <div class="hover_bkgr_fricc" style="left: 0%;">
-                <span class="helper"></span>
-                <div>
-                    <h2>Processando...</h2>
-                    <br />
-                    <h3>Aguarde: <span id="count" style="text-transform: lowercase;"></span></h3>
-                </div>
-            </div>
-        </div>
-
-        <script type="text/javascript" src="{% static 'javascripts/jQuery.js' %}"></script>
-        <script type="text/javascript" src="{% static 'javascripts/script.js' %}"></script>
-
-    </body>
+	</body>
 </div>
 
 {% if messages %}
 <ul class="messages">
-    {% for message in messages %}
-    <!-- <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li> -->
-    <script type="text/javascript">alert("{{ message }}")</script>
-    {% endfor %}
+	{% for message in messages %}
+	<!-- <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li> -->
+	<script type="text/javascript">alert("{{ message }}")</script>
+	{% endfor %}
 </ul>
 {% endif %}

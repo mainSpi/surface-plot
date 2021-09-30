@@ -1,186 +1,283 @@
 @import url("https://fonts.googleapis.com/css?family=Lato");
+
+/* 
+background: #e74c3c
+text: #c0392b
+text hover: #ab3326
+button: #962d22
+button hover: #6d2018 
+*/
+
 /* line 9, ../sass/style.scss */
 * {
-  margin: 0;
-  padding: 0;
-  font-family: Lato, Arial;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: Lato, Arial;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 /* line 15, ../sass/style.scss */
 body {
-  color: #fff;
-  padding: 55px 25px;
-  background-color: #e74c3c;
+	color: #fff;
+	padding: 55px 25px;
+	background-color: #e74c3c;
 }
 
 /* line 20, ../sass/style.scss */
 h1 {
-  font-weight: normal;
-  font-size: 40px;
-  font-weight: normal;
-  text-transform: uppercase;
+	font-weight: normal;
+	font-size: 40px;
+	font-weight: normal;
+	text-transform: uppercase;
 }
 /* line 25, ../sass/style.scss */
 h1 span {
-  font-size: 13px;
-  display: block;
-  padding-left: 4px;
+	font-size: 13px;
+	display: block;
+	padding-left: 4px;
 }
 
 /* line 31, ../sass/style.scss */
 p {
-  margin-top: 200px;
+	margin-top: 200px;
 }
 /* line 33, ../sass/style.scss */
 p a {
-  text-transform: uppercase;
-  text-decoration: none;
-  display: inline-block;
-  color: #fff;
-  padding: 5px 10px;
-  margin: 0 5px;
-  background-color: #b83729;
-  -moz-transition: all 0.2s ease-in;
-  -o-transition: all 0.2s ease-in;
-  -webkit-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
+	text-transform: uppercase;
+	text-decoration: none;
+	display: inline-block;
+	color: #fff;
+	padding: 5px 10px;
+	margin: 0 5px;
+	background-color: #b83729;
+	-moz-transition: all 0.2s ease-in;
+	-o-transition: all 0.2s ease-in;
+	-webkit-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
 }
 /* line 42, ../sass/style.scss */
 p a:hover {
-  background-color: #ab3326;
+	background-color: #ab3326;
 }
 
 /* line 47, ../sass/style.scss */
 .custom-file-upload-hidden {
-  display: none;
-  visibility: hidden;
-  position: absolute;
-  left: -9999px;
+	display: none;
+	visibility: hidden;
+	position: absolute;
+	left: -9999px;
 }
 
 /* line 53, ../sass/style.scss */
 .custom-file-upload {
-  display: block;
-  width: auto;
-  font-size: 16px;
-  margin-top: 30px;
+	display: block;
+	width: auto;
+	font-size: 16px;
+	/* margin-top: 30px; */
 }
 /* line 59, ../sass/style.scss */
 .custom-file-upload label {
-  display: block;
-  margin-bottom: 5px;
+	display: block;
+	margin-bottom: 5px;
 }
 
 /* line 65, ../sass/style.scss */
 .file-upload-wrapper {
-  position: relative;
-  margin-bottom: 5px;
+	position: relative;
+	margin-bottom: 5px;
 }
 
 /* line 70, ../sass/style.scss */
 .file-upload-input {
-  width: 300px;
-  color: #fff;
-  font-size: 16px;
-  padding: 11px 17px;
-  border: none;
-  background-color: #c0392b;
-  -moz-transition: all 0.2s ease-in;
-  -o-transition: all 0.2s ease-in;
-  -webkit-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
-  float: left;
-  /* IE 9 Fix */
+	width: 300px;
+	color: #fff;
+	font-size: 16px;
+	padding: 11px 17px;
+	border: none;
+	background-color: #c0392b;
+	-moz-transition: all 0.2s ease-in;
+	-o-transition: all 0.2s ease-in;
+	-webkit-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+	float: left;
+	/* IE 9 Fix */
 }
 /* line 79, ../sass/style.scss */
 .file-upload-input:hover, .file-upload-input:focus {
-  background-color: #ab3326;
-  outline: none;
+	background-color: #ab3326;
+	outline: none;
 }
 
 /* line 84, ../sass/style.scss */
 .file-upload-button {
-  cursor: pointer;
-  display: inline-block;
-  color: #fff;
-  font-size: 16px;
-  text-transform: uppercase;
-  padding: 11px 20px;
-  border: none;
-  margin-left: -1px;
-  background-color: #962d22;
-  float: left;
-  /* IE 9 Fix */
-  -moz-transition: all 0.2s ease-in;
-  -o-transition: all 0.2s ease-in;
-  -webkit-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
+	cursor: pointer;
+	display: inline-block;
+	color: #fff;
+	font-size: 16px;
+	text-transform: uppercase;
+	padding: 11px 20px;
+	border: none;
+	margin-left: -1px;
+	background-color: #962d22;
+	float: left;
+	/* IE 9 Fix */
+	-moz-transition: all 0.2s ease-in;
+	-o-transition: all 0.2s ease-in;
+	-webkit-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
 }
 /* line 96, ../sass/style.scss */
 .file-upload-button:hover {
-  background-color: #6d2018;
+	background-color: #6d2018;
 }
 
 .big-div {
-  height: 100%;
-  width: 100%;
+	height: 100%;
+	width: 100%;
 }
+
+/* Image BEGIN */
+.imgbox {
+	display: grid;
+	padding-top: 30px;
+}
+
+.center-fit {
+	max-width: 100%;
+	max-height: 100vh;
+	margin: auto;
+}
+/* Image END */
+
+/* Checkbox BEGIN */
+
+/* The container */
+.container {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-top: 60px;
+	margin-bottom: 20px;
+	cursor: pointer;
+	font-size: 20px;
+	font-family: Lato, Arial;
+	text-transform: uppercase;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color: #c0392b;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+	background-color: #ab3326;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+	background-color: #962d22;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+	display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+	left: 9px;
+	top: 5px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+  }
+
+/* Checkbox END */
 
 /* Popup box BEGIN */
 .hover_bkgr_fricc{
-  background:rgba(0,0,0,.4);
-  cursor:pointer;
-  display:none;
-  height:100%;
-  position:fixed;
-  text-align:center;
-  top:0;
-  width:100%;
-  z-index:10000;
+	background:rgba(0,0,0,.4);
+	cursor:pointer;
+	display:none;
+	height:100%;
+	position:fixed;
+	text-align:center;
+	top:0;
+	width:100%;
+	z-index:10000;
 }
 .hover_bkgr_fricc .helper{
-  color: black;
-  display:inline-block;
-  height:100%;
-  vertical-align:middle;
+	color: black;
+	display:inline-block;
+	height:100%;
+	vertical-align:middle;
 }
 .hover_bkgr_fricc > div {
-  background-color: #fff;
-  box-shadow: 10px 10px 60px #555;
-  display: inline-block;
-  height: auto;
-  max-width: 551px;
-  min-height: 100px;
-  vertical-align: middle;
-  width: 60%;
-  position: relative;
-  border-radius: 8px;
-  padding: 15px 5%;
+	background-color: #fff;
+	box-shadow: 10px 10px 60px #555;
+	display: inline-block;
+	height: auto;
+	max-width: 551px;
+	min-height: 100px;
+	vertical-align: middle;
+	width: 60%;
+	position: relative;
+	border-radius: 8px;
+	padding: 15px 5%;
 }
 h2 {
-  color: black;
-  font-weight: bold;
-  font-size: 5vh;
-  font-weight: normal;
-  text-transform: uppercase;
+	color: black;
+	font-weight: bold;
+	font-size: 5vh;
+	font-weight: normal;
+	text-transform: uppercase;
 }
 h3 {
-  color: rgb(54, 44, 44);
-  font-weight: bolder;
-  font-size: 4vh;
-  font-weight: normal;
-  text-transform: uppercase;
+	color: rgb(54, 44, 44);
+	font-weight: bolder;
+	font-size: 4vh;
+	font-weight: normal;
+	text-transform: uppercase;
 }
 @media screen and (max-width: 500px) {
-  h2 {
-    font-size: 5vw;
-  }
-  h3 {
-    font-size: 4vw;
-  }
+	h2 {
+	font-size: 5vw;
+	}
+	h3 {
+	font-size: 4vw;
+	}
 }
 
 /* Popup box BEGIN */

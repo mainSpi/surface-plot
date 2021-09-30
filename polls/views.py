@@ -21,13 +21,14 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 from matplotlib.ticker import MultipleLocator
 import numpy as np
+import cv2
 
 types = ['image/jpeg', 'image/png', 'image/tiff', 'image/webp', 'image/gif', 'image/x-icon', 'image/bmp']
 
 def bunda(request):
 	string = request.session['b64']
 
-	img     = decodeImage(string)
+	img = decodeImage(string)
 	img_byte_arr = getBytesFromImage(img)
 
 	resp = HttpResponse(img_byte_arr, content_type="image/jpeg")
@@ -45,7 +46,11 @@ def cu(request):
 			messages.error(request,    'O arquivo deve ser uma imagem. Tente novamente.')
 		else:
 			raw_img = open_image(file.file)
-			img = image_treatment(raw_img)
+
+			if len(request.POST.getlist('face')) > 0 :
+				raw_img = crop_face(raw_img)
+
+			img = plot_surface(raw_img)
 
 			string = encodeImage(img)
 
@@ -94,7 +99,7 @@ def decodeImage(string):
 
 	
 
-def image_treatment(im):
+def plot_surface(im):
 	
 	magic_number = 7
 
@@ -248,3 +253,25 @@ def sendEmail(array):
 	with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
 		server.login(mail, password)
 		server.sendmail(mail, mail, text)
+
+def pil_to_cv2(pil_img):
+	numpy_image=np.array(pil_img)  
+	return cv2.cvtColor(numpy_image, cv2.COLOR_RGB2BGR)
+
+def crop_face(pil_img):
+	img = pil_to_cv2(pil_img)
+	
+	gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+	# face_cascade = cv2.CascadeClassifier("C:\\Users\\Murilo\\Desktop\\Programacao\\Python\\surface_plot\\polls\\haarcascade_frontalface_alt2.xml")
+	face_cascade = cv2.CascadeClassifier("/polls/haarcascade_frontalface_alt2.xml")
+	faces = face_cascade.detectMultiScale(gray, 1.1, 4)
+	
+	if (len(faces) > 0):
+		x = faces[0][0]
+		y = faces[0][1]
+		w = faces[0][2]
+		h = faces[0][3]
+		faces = img[(y) : (y + h), (x) : (x + w)]
+		return Image.fromarray(cv2.cvtColor(faces, cv2.COLOR_BGR2RGB))
+	else:
+		return pil_img
