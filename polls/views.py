@@ -22,6 +22,7 @@ from matplotlib import cm
 from matplotlib.ticker import MultipleLocator
 import numpy as np
 import cv2
+import os
 
 types = ['image/jpeg', 'image/png', 'image/tiff', 'image/webp', 'image/gif', 'image/x-icon', 'image/bmp']
 
@@ -46,6 +47,12 @@ def cu(request):
 			messages.error(request,    'O arquivo deve ser uma imagem. Tente novamente.')
 		else:
 			raw_img = open_image(file.file)
+
+			print('\n')
+			print('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+			print(os.getcwd())
+			print('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+			print('\n')
 
 			if len(request.POST.getlist('face')) > 0 :
 				raw_img = crop_face(raw_img)
