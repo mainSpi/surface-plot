@@ -259,6 +259,15 @@ def pil_to_cv2(pil_img):
 	return cv2.cvtColor(numpy_image, cv2.COLOR_RGB2BGR)
 
 def crop_face(pil_img):
+    	
+	width = pil_img.size[0]
+	height = pil_img.size[1]
+
+	size = width if (width > height) else height
+	scale = int(1000/size)
+
+	pil_img = pil_img.resize((width*scale, height*plt.scale))
+
 	img = pil_to_cv2(pil_img)
 	
 	gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
