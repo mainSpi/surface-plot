@@ -25,10 +25,10 @@ mimetypes.add_type("text/html", ".css", True)
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-#ca^9o*&7x=+bb5&$9k7#)w1mb&^m)m&58293hdk-#+uo6e474o*'
+SECRET_KEY = os.environ['secret_key']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
 ALLOWED_HOSTS = []
