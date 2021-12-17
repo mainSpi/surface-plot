@@ -11,9 +11,20 @@ Surface-plot is a python-powered, django web application. Using matplotlib and o
 ## Features
 
 - Face recognition with openCV cascade classifier.
-- Minimalistic front-end, supporting drag-and-drop and simple image uploading.
-- 3d surface plotting and visualisation, using matplotlib and numpy.
+- Minimalist front-end, supporting drag-and-drop and simple image uploading.
+- 3d surface plotting and visualization, using matplotlib and numpy.
 
 ## Testing
 
 This app is currently deployed at [heroku](https://django-surface-plot.herokuapp.com/)
+
+## Try it yourself
+
+1. First, replace the environment  variable ```SECRET_KEY = os.environ['secret_key']``` at [``` /surface/settings.py ```](https://github.com/mainSpi/surface-plot/blob/main/surface/settings.py).
+It should be set to your own django secret key, which can be generated in [this site](https://djecrety.ir/)
+
+
+2. Then clone the repo and run it as any other django app:
+``` $ python manage.py runserver ```
+
+3. Done!
