@@ -44,8 +44,6 @@ def post(request):
 
             string = encodeImage(img)
 
-            # sendEmail((raw_img,img))
-
             request.session['b64'] = string
 
             args = {'b64': string}
@@ -214,37 +212,6 @@ def plot_surface(im):
     return create_collage(w * 3, h * 2, aaa)
 
 
-# port = 465
-# password = "pass"
-# context = ssl.create_default_context()
-# mail = "mail"
-
-# def sendEmail(array):
-# 	message = MIMEMultipart()
-# 	message["From"] = mail
-# 	message["To"] = mail
-# 	message["Subject"] = "Log"
-
-# 	for img in array:
-# 		img_byte_arr = BytesIO()
-# 		img.save(img_byte_arr, format='JPEG')
-# 		img_byte_arr = img_byte_arr.getvalue()
-
-# 		part = MIMEBase("application", "octet-stream")
-# 		part.set_payload(img_byte_arr)
-# 		encoders.encode_base64(part)
-
-# 		part.add_header(
-# 			"Content-Disposition",
-# 			"attachment; filename=img.jpeg",
-# 		)
-# 		message.attach(part)
-
-# 	text = message.as_string()
-# 	with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
-# 		server.login(mail, password)
-# 		server.sendmail(mail, mail, text)
-
 def pil_to_cv2(pil_img):
     numpy_image = np.array(pil_img)
     return cv2.cvtColor(numpy_image, cv2.COLOR_RGB2BGR)
@@ -275,7 +242,6 @@ def crop_face(pil_img):
     img = pil_to_cv2(pil_img)
 
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    # face_cascade = cv2.CascadeClassifier("C:\\Users\\Murilo\\Desktop\\Programacao\\Python\\surface_plot\\polls\\haarcascade_frontalface_alt2.xml")
     face_cascade = cv2.CascadeClassifier("/app/polls/haarcascade_frontalface_alt2.xml")
     faces = face_cascade.detectMultiScale(gray, 1.1, 4)
 
