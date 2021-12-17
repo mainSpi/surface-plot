@@ -20,7 +20,7 @@ This app is currently deployed at [heroku](https://django-surface-plot.herokuapp
 
 ## Try it yourself
 
-1. First, replace the environment  variable ```SECRET_KEY = os.environ['secret_key']``` at [``` /surface/settings.py ```](https://github.com/mainSpi/surface-plot/blob/main/surface/settings.py).
+1. First, overwrite the environment  variable ```SECRET_KEY = os.environ['secret_key']``` at [``` /surface/settings.py ```](https://github.com/mainSpi/surface-plot/blob/main/surface/settings.py).
 It should be set to your own django secret key, which can be generated in [this site](https://djecrety.ir/)
 
 
