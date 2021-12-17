@@ -15,7 +15,7 @@ from matplotlib.ticker import MultipleLocator
 types = ['image/jpeg', 'image/png', 'image/tiff', 'image/webp', 'image/gif', 'image/x-icon', 'image/bmp']
 
 
-def dunno(request):
+def show(request):
     string = request.session['b64']
 
     img = decodeImage(string)
