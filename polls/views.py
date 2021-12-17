@@ -1,32 +1,21 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.contrib import messages
-from django.template.response import TemplateResponse
-# from django.shortcuts import redirect
-
-from pprint import pprint
-from PIL import Image
 import base64
 from io import BytesIO
 
-# import smtplib, ssl
-# from email import encoders
-# from email.mime.base import MIMEBase
-# from email.mime.multipart import MIMEMultipart
-# from email.mime.text import MIMEText
-from PIL import ImageOps
-from io import BytesIO
-
-import matplotlib.pyplot as plt
-from matplotlib import cm
-from matplotlib.ticker import MultipleLocator
-import numpy as np
 import cv2
+import matplotlib.pyplot as plt
+import numpy as np
+from PIL import Image
+from PIL import ImageOps
+from django.contrib import messages
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.template.response import TemplateResponse
+from matplotlib.ticker import MultipleLocator
 
 types = ['image/jpeg', 'image/png', 'image/tiff', 'image/webp', 'image/gif', 'image/x-icon', 'image/bmp']
 
 
-def bunda(request):
+def dunno(request):
     string = request.session['b64']
 
     img = decodeImage(string)
@@ -37,7 +26,7 @@ def bunda(request):
     return resp
 
 
-def cu(request):
+def post(request):
     if request.method == 'POST':
         file = request.FILES.get('image')
 
@@ -59,8 +48,7 @@ def cu(request):
 
             request.session['b64'] = string
 
-            args = {}
-            args['b64'] = string
+            args = {'b64': string}
             resp = TemplateResponse(request, 'site/index.html', args)
             prepareResponse(resp)
 
@@ -227,9 +215,9 @@ def plot_surface(im):
 
 
 # port = 465
-# password = "Oi112466"
+# password = "pass"
 # context = ssl.create_default_context()
-# mail = "meuraspinfo@gmail.com"
+# mail = "mail"
 
 # def sendEmail(array):
 # 	message = MIMEMultipart()

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,13 +25,11 @@ mimetypes.add_type("text/html", ".css", True)
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-#ca^9o*&7x=+bb5&$9k7#)w1mb&^m)m&5xa!rj-#+uo6e474o*'
 SECRET_KEY = 'django-insecure-#ca^9o*&7x=+bb5&$9k7#)w1mb&^m)m&58293hdk-#+uo6e474o*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-# GUNICORN_CMD_ARGS = '--timeout 900'
 
 ALLOWED_HOSTS = []
 
@@ -48,13 +47,8 @@ INSTALLED_APPS = [
     # 'sass_processor',
 ]
 
-# STATICFILES_FINDERS = [
-    # 'django.contrib.staticfiles.finders.FileSystemFinder',
-    # 'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    # 'sass_processor.finders.CssFinder',
-# ]
-
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -85,8 +79,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'surface.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -94,23 +86,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-
-# Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
-
-# AUTH_PASSWORD_VALIDATORS = [
-#     {
-#         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-#     },
-#         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-#     {
-#         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-#     },
-#     {
-#         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-#     },
-# ]
 
 
 # Internationalization
@@ -140,12 +115,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')/
 # MEDIA_URL = '/media/'
 
-STATIC_ROOT = ''
+# STATIC_ROOT = ''
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATICFILES_DIRS = ( os.path.join('static'), )
+# STATICFILES_DIRS = ( os.path.join('static'), )
 
 # Configure Django App for Heroku.
-import django_heroku
-django_heroku.settings(locals())
 
-# SASS_PROCESSOR_ROOT = STATIC_ROOT
+django_heroku.settings(locals())
