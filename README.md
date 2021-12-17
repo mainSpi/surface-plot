@@ -13,3 +13,7 @@ Surface-plot is a python-powered, django web application. Using matplotlib and o
 - Face recognition with openCV cascade classifier.
 - Minimalistic front-end, supporting drag-and-drop and simple image uploading.
 - 3d surface plotting and visualisation, using matplotlib and numpy.
+
+## Testing
+
+This app is currently deployed at [heroku](https://django-surface-plot.herokuapp.com/)
